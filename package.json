@@ -4,6 +4,7 @@
   "description": "Employee Management System using MERN Stack (reactJS, reduxJS, expressJS, nodeJS and mongoDB)",
   "private": true,
   "scripts": {
+    "seed": "node seed.js",
     "start": "node index.js",
     "server": "nodemon index.js",
     "client-install": "npm install --prefix client",
@@ -25,6 +26,7 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2",
+    "mongoose-seed": "^0.6.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.10.0"

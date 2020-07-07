@@ -24,6 +24,13 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  loginHistory: [
+    {
+      login: {
+        type: Date,
+      },
+    },
+  ],
 });
 
 module.exports = Users = mongoose.model('users', UserSchema);
