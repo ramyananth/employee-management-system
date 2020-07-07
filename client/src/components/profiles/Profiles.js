@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Spinner from '../common/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profileActions';
 
@@ -16,22 +15,14 @@ class Profiles extends Component {
   render() {
     const { profiles, loading } = this.props.profile;
     let profileItems;
-    let spinners;
-    if (profiles === null || loading) {
-      spinners = <Spinner />;
+
+    if (profiles.length > 0) {
+      let a = 0;
+      profileItems = profiles.map((profile) => (
+        <ProfileItem serial={(a = a + 1)} key={profile._id} profile={profile} />
+      ));
     } else {
-      if (profiles.length > 0) {
-        let a = 0;
-        profileItems = profiles.map((profile) => (
-          <ProfileItem
-            serial={(a = a + 1)}
-            key={profile._id}
-            profile={profile}
-          />
-        ));
-      } else {
-        profileItems = <h4>No profiles found...</h4>;
-      }
+      profileItems = <h4>No profiles found...</h4>;
     }
 
     return (
@@ -41,7 +32,6 @@ class Profiles extends Component {
             <div className='col-md-12'>
               <h1 className='display-4 text-center'>Employees Profiles</h1>
               <p className='lead text-center'>List of employee details</p>
-              {spinners}
               <table className='table'>
                 <thead className='thead-dark'>
                   <tr>
